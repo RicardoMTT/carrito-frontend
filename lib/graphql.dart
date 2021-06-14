@@ -3,7 +3,7 @@ import 'package:probardispositivofisico/jwt.dart';
 
 GraphQLClient getGraphqlClient() {
   final HttpLink httpLink = HttpLink(
-    'http://192.168.1.2:1337/graphql',
+    'http://192.168.1.8:1337/graphql',
   );
 
   final AuthLink authLink = AuthLink(

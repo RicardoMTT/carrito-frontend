@@ -66,7 +66,7 @@ class Body extends StatelessWidget {
                                   color: Colors.white, shape: BoxShape.circle),
                             ),
                             Image.network(
-                              'http://192.168.1.2:1337' +
+                              'http://192.168.1.8:1337' +
                                   _item['avatar']['url'],
                               width: size.width * 0.70,
                               height: size.height * 0.70,

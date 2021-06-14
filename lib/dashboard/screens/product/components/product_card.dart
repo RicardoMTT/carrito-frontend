@@ -42,11 +42,17 @@ class ProductCard extends StatelessWidget {
               right: 0,
               child: Container(
                 height: 160,
-                width: 200,
+                width: 120,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
                 padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
                 child: FadeInImage.assetNetwork(
                   placeholder: 'assets/gif/loading.gif',
-                  image: ('http://192.168.1.2:1337' + product['avatar']['url']),
+                  image: ('http://192.168.1.8:1337' + product['avatar']['url']),
+                  fit: BoxFit.cover,
+                  width: 120,
+                  height: 160,
                 ),
               ),
             ),

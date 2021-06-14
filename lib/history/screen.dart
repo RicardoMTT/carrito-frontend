@@ -16,17 +16,17 @@ class HistoryScreen extends StatelessWidget {
         title: Text('Historial'),
         automaticallyImplyLeading: false,
         actions: [
-          SizedBox(
-            width: 100,
-            child: TextFormField(
-              onChanged: (string) {
-                timer.cancel();
-                timer = Timer(Duration(seconds: 2), () {
-                  print(string);
-                });
-              },
-            ),
-          ),
+          // SizedBox(
+          //   width: 100,
+          //   child: TextFormField(
+          //     onChanged: (string) {
+          //       timer.cancel();
+          //       timer = Timer(Duration(seconds: 2), () {
+          //         print(string);
+          //       });
+          //     },
+          //   ),
+          // ),
           IconButton(
               icon: Icon(Icons.home),
               onPressed: () {

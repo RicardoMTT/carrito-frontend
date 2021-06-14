@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:probardispositivofisico/app_routing/routing.dart';
 import 'package:probardispositivofisico/constants.dart';
 import 'package:probardispositivofisico/components/search_delegate.dart';
-import 'package:probardispositivofisico/dashboard/screens/details/details_screen.dart';
 import 'package:probardispositivofisico/dashboard/screens/product/components/products_controller.dart';
 
 class SearchBox extends StatelessWidget {

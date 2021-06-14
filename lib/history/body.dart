@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:probardispositivofisico/constants.dart';
 import 'package:probardispositivofisico/history/queries/compra_detalle.dart';
-import 'dart:async';
 
 class Body extends StatelessWidget {
   const Body({Key key}) : super(key: key);
@@ -22,55 +21,23 @@ class Body extends StatelessWidget {
         }
         final List<dynamic> listDetalleCompra = result.data['compraDetalles'];
         return Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Mi historial',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: kPrimaryColor,
-                    fontSize: 20),
-              ),
-              // REALIZAR BUSQUEDA
-              // TextFormField(
-              //   onChanged: (string) {
-              //     timer.cancel();
-              //     timer = Timer(Duration(seconds: 2), () {
-              //       print(string);
-              //     });
-              //   },
-              // ),
-              Expanded(
-                  child: Stack(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: 70),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40),
-                      ),
-                    ),
-                  ),
-                  RefreshIndicator(
-                    onRefresh: refetch,
-                    child: GridView.count(
-                      mainAxisSpacing: 20, //Espacio entre filas,
-                      crossAxisSpacing: 20, // Espacio entre columnas
-                      crossAxisCount: 2,
-                      children: List.generate(listDetalleCompra.length,
-                          (index) => getCardItem(listDetalleCompra[index])),
-                    ),
-                  )
-                ],
-              ))
-            ],
-          ),
-        );
+            padding: const EdgeInsets.all(20.0),
+            child: ListView.builder(
+              itemCount: listDetalleCompra.length,
+              itemBuilder: (context, index) {
+                if (index == 0) {
+                  return Text(
+                    'Mi historial',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: kPrimaryColor,
+                        fontSize: 20),
+                  );
+                } else {
+                  return getCardItem(listDetalleCompra[index]);
+                }
+              },
+            ));
       },
     );
   }
@@ -79,7 +46,7 @@ class Body extends StatelessWidget {
     final total = item['producto']['precio'] * item['cantidad'];
 
     return Container(
-      color: Colors.blueAccent,
+      margin: EdgeInsets.only(bottom: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,17 +71,17 @@ class Body extends StatelessWidget {
                 "Precio: ${item['producto']['precio'].toString()}",
                 style: TextStyle(fontSize: 10),
               ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                "Total: ${total.toString()}",
+                style: TextStyle(fontSize: 10),
+              ),
+              SizedBox(
+                width: 10,
+              ),
             ],
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Text(
-            "Total: ${total.toString()}",
-            style: TextStyle(fontSize: 10),
-          ),
-          SizedBox(
-            width: 10,
           ),
         ],
       ),
